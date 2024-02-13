@@ -14,4 +14,4 @@ export  const API_OPTIONS = {
 
 export const MOVIE_PATH = "https://image.tmdb.org/t/p/w500";
 
-export const OPEN_AI = "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"; 
+export const OPEN_AI = "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"; 
