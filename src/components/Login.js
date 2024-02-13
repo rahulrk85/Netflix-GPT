@@ -58,11 +58,11 @@ const Login = () => {
     <div className=''>
         <div className='absolute'>
             <Header/>
-            <img className='-z-10' src= {BG_IMG} alt='bg-img'/>
+            <img className='-z-10 h-screen md:h-auto object-cover' src= {BG_IMG} alt='bg-img'/>
         </div>
-        <div className='absolute text-white bg-black w-3/12 my-32 mx-auto right-0 left-0 h-4/6 flex justify-center rounded-sm bg-opacity-90' >
+        <div className='absolute text-white bg-black w-2/3 md:w-3/12 my-32 mx-auto right-0 left-0 h-4/6 flex justify-center rounded-sm bg-opacity-90' >
         <form onSubmit={(e)=>e.preventDefault()}>
-            <h1 className='ml-11 w-full  text-3xl mt-12 mb-9 font-semibold'>{Islog?"Sign In":"Sign Up"}</h1>
+            <h1 className='ml-11 w-full text-2xl md:text-3xl mt-12 mb-9 font-semibold'>{Islog?"Sign In":"Sign Up"}</h1>
 
             {!Islog && <input className='ml-11 w-9/12 mb-5 h-11 rounded-sm bg-gray-900 bg-opacity-80 p-4' type='text' placeholder='Full Name'/>}
 
