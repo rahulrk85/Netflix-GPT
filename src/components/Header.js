@@ -48,7 +48,7 @@ const Header = () => {
   return (
     <div className="absolute bg-gradient-to-b from-black w-screen flex justify-between z-50">
       
-      <img className="w-32 md:w-48 ml-5 pl-4 py-3" src={LOGO} alt='logo'/>
+      <img className="w-28 md:w-48 md:ml-5 pl-4 py-3" src={LOGO} alt='logo'/>
         {user && <div className='flex '>
           <button className='my-8 mr-8 font-semibold cursor-pointer float-right text-white bg-red-700 px-3 rounded-lg' onClick={handleGptSearch}>
             {gptButton?"Home":"GPT Search"}
