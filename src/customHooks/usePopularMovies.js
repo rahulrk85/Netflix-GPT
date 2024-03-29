@@ -12,6 +12,7 @@ const usePopularMovies = ()=>{
       const json = await data.json();
       dispatch(addPopularMovies(json.results));
     }
+    // the tmdb website is not working and the list of movies like nowplaying movies and others are not able to fetch from this website so either find another website with same api structure or build your own api i think we should use the vpn to fetch the movies of the tmdb website try once doing this and let me know if that works 
   
     useEffect(()=>{
      !popularMovies && getNowPlayingMovies();
