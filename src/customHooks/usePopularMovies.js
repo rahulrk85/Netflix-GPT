@@ -12,10 +12,30 @@ const usePopularMovies = ()=>{
       const json = await data.json();
       dispatch(addPopularMovies(json.results));
     }
+    const getNowPlayingMovies1 = async() =>{
+      const url = 'https://moviesdatabase.p.rapidapi.com/titles/x/upcoming?limit=20';
+      const options = {
+	      method: 'GET',
+	      headers: {
+		    'X-RapidAPI-Key': '7e321a2e3dmshf92e1f9626cf012p1bbd6ejsn442803ed61e7',
+		    'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+	      }
+      };
+
+      try {
+	      const response = await fetch(url, options);
+	      const result = await response.text();
+	      console.log(result);
+        const json = result.json();
+        dispatch(addPopularMovies(json.results));
+      } catch (error) {
+	      console.error(error);
+      }
+    }
     // the tmdb website is not working and the list of movies like nowplaying movies and others are not able to fetch from this website so either find another website with same api structure or build your own api i think we should use the vpn to fetch the movies of the tmdb website try once doing this and let me know if that works 
   
     useEffect(()=>{
-     !popularMovies && getNowPlayingMovies();
+     !popularMovies && getNowPlayingMovies1();
     },[])
 };
 export default usePopularMovies;

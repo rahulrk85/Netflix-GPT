@@ -16,11 +16,6 @@ const Browse = () => {
   const movies=useSelector((store)=>store.movies?.nowPlayingMovies);
   if(movies===null) return;
 
-
-
-
-  
-
   const main_movie = movies[6];
   const {original_title, overview, id } = main_movie;
 

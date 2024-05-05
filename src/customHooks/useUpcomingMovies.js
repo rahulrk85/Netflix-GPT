@@ -12,9 +12,29 @@ const useUpcomingMovies = ()=>{
       const json = await data.json();
       dispatch(addUpcomingMovies(json.results));
     }
+    const getNowPlayingMovies1 = async() =>{
+      const url = 'https://moviesdatabase.p.rapidapi.com/titles/x/upcoming?limit=20';
+      const options = {
+	      method: 'GET',
+	      headers: {
+		    'X-RapidAPI-Key': '7e321a2e3dmshf92e1f9626cf012p1bbd6ejsn442803ed61e7',
+		    'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+	      }
+      };
+
+      try {
+	      const response = await fetch(url, options);
+	      const result = await response.text();
+	      console.log(result);
+        const json = result.json();
+        dispatch(addUpcomingMovies(json.results));
+      } catch (error) {
+	      console.error(error);
+      }
+    }
   
     useEffect(()=>{
-      !upcomingMovies && getNowPlayingMovies();
+      !upcomingMovies && getNowPlayingMovies1();
     },[])
 };
 export default useUpcomingMovies;
