@@ -10,7 +10,7 @@ const useNowPlayingMovies = ()=>{
       const data = await fetch('https://sidecar.tvtime.com/sidecar/tvtcached?o=https://discover.tvtime.com/v1/discover/cgw/trending');
       const json = await data.json();
       dispatch(addNowPlayingMovies(json.data))
-      console.log(json);
+      console.log(json.data);
     }
   
     useEffect(()=>{

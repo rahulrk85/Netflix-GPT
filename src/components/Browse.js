@@ -17,8 +17,7 @@ const Browse = () => {
   if(movies===null) return;
 
   const main_movie = movies[6];
-  const {originalTitleText, overview, id } = main_movie;
-  const {original_title} = originalTitleText.text;
+  const {name, id } = main_movie;
 
   return (
     <div className=''>
@@ -29,7 +28,7 @@ const Browse = () => {
       {gpt?<GptSearch/>:<>
       
       
-      <Maincontainer title={original_title} overview={overview} id={id} />
+      <Maincontainer title={name} id={id} />
       <Secondaryscreen/>
       </>}
       {/* <Header/>
