@@ -14,7 +14,7 @@ const BackgroungVideo = ({id}) => {
     <div className='w-screen relative '>
         <iframe 
         className='w-screen relative -z-50 aspect-video'
-        src={"https://www.youtube.com/embed/"+Trailer?.key+"?&autoplay=1&mute=1"}
+        src={"https://www.youtube.com/embed/F478PvRt74Y?&autoplay=1&mute=1"}
         title="YouTube video player"
         >
         </iframe>
