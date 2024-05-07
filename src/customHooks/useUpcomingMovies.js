@@ -8,33 +8,13 @@ const useUpcomingMovies = ()=>{
     const upcomingMovies = useSelector((store)=>store.movies.upcomingMovies);
 
     const getNowPlayingMovies = async() =>{
-      const data = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', API_OPTIONS);
+      const data = await fetch('https://sidecar.tvtime.com/sidecar/tvtcached?o=https://discover.tvtime.com/v1/discover/cgw/trending');
       const json = await data.json();
-      dispatch(addUpcomingMovies(json.results));
-    }
-    const getNowPlayingMovies1 = async() =>{
-      const url = 'https://moviesdatabase.p.rapidapi.com/titles/x/upcoming?limit=20';
-      const options = {
-	      method: 'GET',
-	      headers: {
-		    'X-RapidAPI-Key': '7e321a2e3dmshf92e1f9626cf012p1bbd6ejsn442803ed61e7',
-		    'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
-	      }
-      };
-
-      try {
-	      const response = await fetch(url, options);
-	      const result = await response.text();
-	      console.log(result);
-        const json = result.json();
-        dispatch(addUpcomingMovies(json.results));
-      } catch (error) {
-	      console.error(error);
-      }
+      dispatch(addUpcomingMovies(json.data));
     }
   
     useEffect(()=>{
-      !upcomingMovies && getNowPlayingMovies1();
+      !upcomingMovies && getNowPlayingMovies();
     },[])
 };
 export default useUpcomingMovies;

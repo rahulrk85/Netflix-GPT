@@ -7,34 +7,15 @@ const useNowPlayingMovies = ()=>{
     const nowPlayingMovies = useSelector((store)=>store.movies.nowPlayingMovies);
 
     const getNowPlayingMovies = async() =>{
-      const data = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=aae31bc3cfc5ef6bab2b64cc33c22174');
+      const data = await fetch('https://sidecar.tvtime.com/sidecar/tvtcached?o=https://discover.tvtime.com/v1/discover/cgw/trending');
       const json = await data.json();
-      dispatch(addNowPlayingMovies(json))
+      dispatch(addNowPlayingMovies(json.data))
+      console.log(json);
     }
   
     useEffect(()=>{
-     !nowPlayingMovies && getNowPlayingMovies1();
-    },[])
+     !nowPlayingMovies && getNowPlayingMovies();
+    },[]);
 
-    const getNowPlayingMovies1 = async() =>{
-      const url = 'https://imdb188.p.rapidapi.com/api/v1/getWhatsStreaming?country=US';
-      const options = {
-	      method: 'GET',
-	      headers: {
-		      'X-RapidAPI-Key': '7e321a2e3dmshf92e1f9626cf012p1bbd6ejsn442803ed61e7',
-		      'X-RapidAPI-Host': 'imdb188.p.rapidapi.com'
-	      }
-      };
-
-      try {
-	      const response = await fetch(url, options);
-	      const result = await response.json();
-        dispatch(addNowPlayingMovies(result.data))
-	      // console.log(result);
-
-      } catch (error) {
-	      console.error(error);
-      }
-    }
 };
 export default useNowPlayingMovies;

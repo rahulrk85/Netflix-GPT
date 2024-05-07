@@ -7,11 +7,10 @@ const MovieList = ({title,movies}) => {
         <div className="flex overflow-x-scroll no-scrollbar">
             <div className="flex ">
                 {movies?.map(movie=><MovieCard key={movie?.id} poster={movie?.poster_path}/>)}
-                
             </div>
         </div>
     </div>
   )
 }
 
-export default MovieList
+export default MovieList;

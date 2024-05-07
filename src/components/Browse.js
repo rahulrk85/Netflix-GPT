@@ -17,7 +17,8 @@ const Browse = () => {
   if(movies===null) return;
 
   const main_movie = movies[6];
-  const {original_title, overview, id } = main_movie;
+  const {originalTitleText, overview, id } = main_movie;
+  const {original_title} = originalTitleText.text;
 
   return (
     <div className=''>
