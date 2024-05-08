@@ -13,7 +13,7 @@ const Maincontainer = ({title,id}) => {
         <div>
             <BackgroungVideo  id={id}/>
         </div>
-        
+         
     </div>
   )
 }
