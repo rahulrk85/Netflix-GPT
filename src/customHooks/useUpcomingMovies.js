@@ -8,9 +8,11 @@ const useUpcomingMovies = ()=>{
     const upcomingMovies = useSelector((store)=>store.movies.upcomingMovies);
 
     const getNowPlayingMovies = async() =>{
-      const data = await fetch('https://sidecar.tvtime.com/sidecar/tvtcached?o=https://discover.tvtime.com/v1/discover/cgw/trending');
-      const json = await data.json();
-      dispatch(addUpcomingMovies(json.data));
+      fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', API_OPTIONS)
+      .then(response => response.json())
+      .then(response => dispatch(addUpcomingMovies(response.results)))
+      .catch(err => console.error(err));
+      // dispatch(addUpcomingMovies(json.data));
     }
   
     useEffect(()=>{

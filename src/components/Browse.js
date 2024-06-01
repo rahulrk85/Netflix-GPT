@@ -6,11 +6,13 @@ import { useSelector } from 'react-redux';
 import usePopularMovies from '../customHooks/usePopularMovies';
 import useUpcomingMovies from '../customHooks/useUpcomingMovies';
 import GptSearch from './GptSearch';
+import useTopRatedMovies from '../customHooks/useTopRatedMovies';
 
 const Browse = () => {
   useNowPlayingMovies();
   usePopularMovies();
   useUpcomingMovies();
+  useTopRatedMovies();
   const gpt = useSelector((store)=>store.gpt.gptToggle);
 
   const movies=useSelector((store)=>store.movies?.nowPlayingMovies);
