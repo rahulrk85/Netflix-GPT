@@ -4,7 +4,6 @@ import MovieCard from "./MovieCard";
 const MovieList = ({ title, movies }) => {
   // const posters = movies.filter((v)=>(v?.poster?.url));
   // const {posters} = (movies.posters[0].url || movies.posters.url);
-  // console.log(posters);
 
   return (
     <div className="px-4 py-3">
