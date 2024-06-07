@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { auth } from "../utilities/firebase";
 import { addUser, removeUser } from "../utilities/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LOGO, USER_PHOTO } from "../utilities/constants";
 import { addGpt } from "../utilities/GPTSlice";
 
@@ -41,7 +41,9 @@ const Header = () => {
   }, []);
   return (
     <div className="absolute bg-gradient-to-b from-black w-screen flex justify-between z-50">
-      <img className="w-28 md:w-48 md:ml-5 pl-4 py-3" src={LOGO} alt="logo" />
+      <Link to="/browse">
+        <img className="w-28 md:w-48 md:ml-5 pl-4 py-3" src={LOGO} alt="logo" />
+      </Link>
       {user && (
         <div className="flex ">
           <button
@@ -51,7 +53,7 @@ const Header = () => {
             {gptButton ? "Home" : "GPT Search"}
           </button>
           <button
-            className="my-8 mr-8 font-semibold cursor-pointer float-right text-white"
+            className="my-8 mr-8 font-semibold cursor-pointer float-right text-white hover:text-yellow-300"
             onClick={handleSignOut}
           >
             (Sign Out)

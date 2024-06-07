@@ -12,8 +12,8 @@ const Secondaryscreen = () => {
   const topratedMovies = useSelector((store) => store.movies?.topratedMovies);
 
   return (
-    <div className="bg-black ">
-      <div className="relative md:-mt-60 z-20">
+    <div className="bg-black no-scrollbar">
+      <div className="relative md:-mt-60 z-20 no-scrollbar">
         <MovieList title={"Now Playing"} movies={nowPlayingMovie} />
         <MovieList title={"Top Rated Movies!"} movies={topratedMovies} />
         <MovieList title={"Trending"} movies={popularMovies} />
