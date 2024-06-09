@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useMoviePage from "../customHooks/useMoviePage";
 import { POSTER_PATH } from "../utilities/constants";
 import ShimmerUi from "./ShimmerUi";
@@ -13,7 +13,7 @@ const MovieDetail = () => {
   if (movieSimilar === null) return;
   // console.log(movieSimilar);
   if (data === null) return <ShimmerUi />;
-  const { backdrop_path, title, overview, vote_average, release_date } = data;
+  const { backdrop_path, title, overview, vote_average } = data;
 
   return (
     <div className="">
@@ -41,7 +41,9 @@ const MovieDetail = () => {
         <div className="flex overflow-x-scroll no-scrollbar">
           <div className="flex">
             {movieSimilar.map((item) => (
-              <SimilarMovies movieSimilar={item} />
+              <Link to={"/watch/" + item.id}>
+                <SimilarMovies movieSimilar={item} />
+              </Link>
             ))}
           </div>
         </div>

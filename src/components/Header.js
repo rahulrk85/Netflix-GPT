@@ -5,17 +5,22 @@ import { addUser, removeUser } from "../utilities/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { LOGO, USER_PHOTO } from "../utilities/constants";
-import { addGpt } from "../utilities/GPTSlice";
+import { addGpt, addSearchBar } from "../utilities/GPTSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const Search = useSelector((store) => store.gpt.searchBar);
   const [gptButton, setgptButton] = useState(false);
   const navigate = useNavigate();
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {})
       .catch((error) => {});
+  };
+
+  const handleSearchBtn = () => {
+    dispatch(addSearchBar());
   };
 
   const handleGptSearch = () => {
@@ -47,11 +52,27 @@ const Header = () => {
       {user && (
         <div className="flex ">
           <button
-            className="my-8 mr-8 font-semibold cursor-pointer float-right text-white bg-red-700 px-3 rounded-lg"
-            onClick={handleGptSearch}
+            className="text-white text-lg px-8  hover:text-yellow-300"
+            onClick={() => handleSearchBtn()}
           >
-            {gptButton ? "Home" : "GPT Search"}
+            {Search ? (
+              "Home "
+            ) : (
+              <img
+                className="w-16 h-12 cursor-pointer rounded-3xl my-8 mr-7"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJu4yxYyaEMA3rIO-K0XPDnbGIrRsXJb_i9Q&s"
+                alt="search icon"
+              />
+            )}
           </button>
+          {!Search && (
+            <button
+              className="my-8 mr-8 font-semibold cursor-pointer float-right text-white bg-red-700 px-3 rounded-lg"
+              onClick={handleGptSearch}
+            >
+              {gptButton ? "Home" : "GPT Search"}
+            </button>
+          )}
           <button
             className="my-8 mr-8 font-semibold cursor-pointer float-right text-white hover:text-yellow-300"
             onClick={handleSignOut}

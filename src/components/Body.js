@@ -17,6 +17,10 @@ const Body = () => {
       path: "/movie/:id",
       element: <MovieDetail />,
     },
+    {
+      path: "/watch/:id",
+      element: <MovieDetail />,
+    },
   ]);
 
   return (

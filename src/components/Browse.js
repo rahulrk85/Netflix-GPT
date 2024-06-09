@@ -7,6 +7,7 @@ import usePopularMovies from "../customHooks/usePopularMovies";
 import useUpcomingMovies from "../customHooks/useUpcomingMovies";
 import GptSearch from "./GptSearch";
 import useTopRatedMovies from "../customHooks/useTopRatedMovies";
+import SearchMovies from "./SearchMovies";
 
 const Browse = () => {
   useNowPlayingMovies();
@@ -14,6 +15,7 @@ const Browse = () => {
   useUpcomingMovies();
   useTopRatedMovies();
   const gpt = useSelector((store) => store.gpt.gptToggle);
+  const Search = useSelector((store) => store.gpt.searchBar);
 
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   if (movies === null) return;
@@ -21,24 +23,28 @@ const Browse = () => {
   const main_movie = movies[6];
   const { name, id } = main_movie;
 
-  return (
-    <div className="no-scrollbar">
-      <Header />
+  if (!Search) {
+    return (
+      <div className="no-scrollbar">
+        <Header />
+        {gpt ? (
+          <GptSearch />
+        ) : (
+          <>
+            <Maincontainer title={name} id={id} />
+            <Secondaryscreen />
+          </>
+        )}
 
-      {gpt ? (
-        <GptSearch />
-      ) : (
-        <>
-          <Maincontainer title={name} id={id} />
-          <Secondaryscreen />
-        </>
-      )}
-      {/* <Header/>
+        {/* <Header/>
       
       <Maincontainer title={original_title} overview={overview} id={id} />
       <Secondaryscreen/> */}
-    </div>
-  );
+      </div>
+    );
+  } else {
+    return <SearchMovies />;
+  }
 };
 
 export default Browse;
