@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { API_OPTIONS } from "../utilities/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addSearchedMovies } from "../utilities/moviesSlice";
 
 const useSearchMovies = (name) => {
-  if (name) {
-    name = name.split().replace(" ", "%20");
-  }
-  const [movies, setmovies] = useState();
+  // if (name) {
+  // name = name.split().replace(" ", "%20");
+  // }
+  const SearchedMovies = useSelector((store) => store.movies.searchedMovies);
+  const [movies, setmovies] = useState(null);
   const dispatch = useDispatch();
   const SearchMovies = () => {
     fetch(
@@ -25,7 +26,7 @@ const useSearchMovies = (name) => {
       .catch((err) => console.error(err));
   };
   useEffect(() => {
-    !movies && SearchMovies();
+    !SearchedMovies && SearchMovies();
   }, []);
 };
 
