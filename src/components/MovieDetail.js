@@ -36,8 +36,8 @@ const MovieDetail = () => {
           alt="poster_image"
         />
       </div>
-      <div className=" p-4 z-10 bg-black">
-        <h1 className="text-white text-4xl py-4 pb-10">Recommended</h1>
+      <div className=" p-4  z-10 bg-black">
+        <h1 className="text-white text-4xl py-4  pb-10">Recommended</h1>
         <div className="flex overflow-x-scroll no-scrollbar">
           <div className="flex">
             {movieSimilar.map((item) => (
