@@ -52,7 +52,7 @@ const Header = () => {
       {user && (
         <div className="flex ">
           <button
-            className="text-white text-lg px-8  hover:text-yellow-300"
+            className="text-white text-lg px-3  hover:text-yellow-300"
             onClick={() => handleSearchBtn()}
           >
             {Search ? (

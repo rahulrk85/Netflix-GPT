@@ -20,9 +20,10 @@ const Browse = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   if (movies === null) return;
 
-  const main_movie = movies[6];
-  const { name, id } = main_movie;
-
+  const num = Math.floor(Math.random() * 10);
+  const main_movie = movies[num];
+  const { original_title, id, overview } = main_movie;
+  // console.log(main_movie);
   if (!Search) {
     return (
       <div className="no-scrollbar">
@@ -31,7 +32,7 @@ const Browse = () => {
           <GptSearch />
         ) : (
           <>
-            <Maincontainer title={name} id={id} />
+            <Maincontainer title={original_title} id={id} overview={overview} />
             <Secondaryscreen />
           </>
         )}
