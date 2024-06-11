@@ -6,9 +6,15 @@ import { useSelector } from "react-redux";
 const SearchMovies = () => {
   // useSearchMovies();
   const movies = useSelector((store) => store.movies.searchedMovies);
+  // console.log(movies.length());
   const [searchText, setSearchText] = useState("");
+
+  const HanbleBtnClick = () => {
+    useSearchMovies(searchText);
+  };
   // let modifiedText = searchText.split().replace(" ", "%20");
   console.log(searchText);
+  // console.log(movies?.length);
   return (
     <div>
       <Header />
@@ -22,12 +28,13 @@ const SearchMovies = () => {
         />
         <button
           className="m-2 text-white rounded-lg p-2 bg-red-700"
-          onClick={useSearchMovies(searchText)}
+          onClick={HanbleBtnClick()}
         >
           Search
         </button>
       </div>
-      {movies && <div>searchedMovies</div>}
+      {/* {movies.length>0 && <div>searchedMovies</div>} */}
+      {movies?.length > 0 ? <div>searchedmovies</div> : <div></div>}
     </div>
   );
 };
