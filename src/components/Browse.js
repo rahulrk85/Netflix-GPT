@@ -8,8 +8,12 @@ import useUpcomingMovies from "../customHooks/useUpcomingMovies";
 import GptSearch from "./GptSearch";
 import useTopRatedMovies from "../customHooks/useTopRatedMovies";
 import SearchMovies from "./SearchMovies";
+import { useEffect } from "react";
 
 const Browse = () => {
+  useEffect(() => {
+    console.log(Math.floor(Math.random() * 10));
+  }, []);
   useNowPlayingMovies();
   usePopularMovies();
   useUpcomingMovies();
@@ -21,6 +25,7 @@ const Browse = () => {
   if (movies === null) return;
 
   const num = Math.floor(Math.random() * 10);
+
   const main_movie = movies[num];
   const { original_title, id, overview } = main_movie;
   // console.log(main_movie);
