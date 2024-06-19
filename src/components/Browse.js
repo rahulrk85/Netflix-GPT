@@ -11,9 +11,6 @@ import SearchMovies from "./SearchMovies";
 import { useEffect } from "react";
 
 const Browse = () => {
-  useEffect(() => {
-    console.log(Math.floor(Math.random() * 10));
-  }, []);
   useNowPlayingMovies();
   usePopularMovies();
   useUpcomingMovies();
