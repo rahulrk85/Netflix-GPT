@@ -7,12 +7,17 @@ import useSimilarmovies from "../customHooks/useSimilarMovies";
 import SimilarMovies from "./SimilarMovies";
 import BackgroungVideo from "./BackgroungVideo";
 import { useState } from "react";
+import useMovieTrailer from "../customHooks/useMovieTrailer";
 
 const MovieDetail = () => {
   const [TrailerVideo, setTrailerVideo] = useState(false);
   const { id } = useParams();
+
+  useMovieTrailer(id);
+
   const data = useMoviePage(id);
   const movieSimilar = useSimilarmovies(id);
+
   if (movieSimilar === null) return;
   // console.log(movieSimilar);
   if (data === null) return <ShimmerUi />;
@@ -23,7 +28,7 @@ const MovieDetail = () => {
     <div className="">
       <DupliHeader />
       {TrailerVideo ? (
-        <BackgroungVideo id={id} />
+        <BackgroungVideo />
       ) : (
         <>
           <div className="text-white text-3xl w-full h-[830px] absolute  bg-gradient-to-t from-black">
@@ -52,7 +57,7 @@ const MovieDetail = () => {
           <div className="flex">
             {movieSimilar.map((item) => (
               <Link to={"/watch/" + item.id}>
-                <SimilarMovies movieSimilar={item} />
+                <SimilarMovies key={item.id} movieSimilar={item} />
               </Link>
             ))}
           </div>

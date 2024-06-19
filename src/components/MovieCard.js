@@ -1,11 +1,11 @@
 import React from "react";
 import { MOVIE_PATH } from "../utilities/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { addMovieDetail, addMoviePage } from "../utilities/GPTSlice";
+import { useDispatch } from "react-redux";
+import { addMoviePage } from "../utilities/GPTSlice";
 
 const MovieCard = ({ poster, key }) => {
   const dispatch = useDispatch();
-  const HandleClick = (key) => {
+  const HandleClick = () => {
     dispatch(addMoviePage());
   };
   if (!poster) return null;

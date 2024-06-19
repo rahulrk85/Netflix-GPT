@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import BackgroungVideo from "./BackgroungVideo";
+import useMovieTrailer from "../customHooks/useMovieTrailer";
 
 const Maincontainer = ({ title, id, overview }) => {
   const [displayTitle, setdisplaTitle] = useState(true);
   const timeOut = setTimeout(() => setdisplaTitle(false), 10000);
+
+  useMovieTrailer(id);
 
   return (
     <div className="w-screen h-auto no-scrollbar ">
@@ -24,7 +27,7 @@ const Maincontainer = ({ title, id, overview }) => {
         </div>
       )}
       <div>
-        <BackgroungVideo id={id} />
+        <BackgroungVideo />
       </div>
     </div>
   );
