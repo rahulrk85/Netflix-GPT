@@ -44,6 +44,7 @@ const Header = () => {
     });
     return () => unsubscribe();
   }, []);
+
   return (
     <div className="absolute bg-gradient-to-b from-black w-screen flex justify-between z-50">
       <Link to="/browse">

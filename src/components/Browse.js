@@ -22,7 +22,7 @@ const Browse = () => {
 
   // const num = Math.floor(Math.random() * 10);
 
-  const main_movie = movies[8];
+  const main_movie = movies[9];
   const { original_title, id, overview } = main_movie;
   // console.log(main_movie);
   if (!Search) {

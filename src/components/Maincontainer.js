@@ -4,7 +4,7 @@ import useMovieTrailer from "../customHooks/useMovieTrailer";
 
 const Maincontainer = ({ title, id, overview }) => {
   const [displayTitle, setdisplaTitle] = useState(true);
-  const timeOut = setTimeout(() => setdisplaTitle(false), 10000);
+  setTimeout(() => setdisplaTitle(false), 10000);
 
   useMovieTrailer(id);
 

@@ -8,6 +8,7 @@ import SimilarMovies from "./SimilarMovies";
 import BackgroungVideo from "./BackgroungVideo";
 import { useState } from "react";
 import useMovieTrailer from "../customHooks/useMovieTrailer";
+import MovieCast from "./MovieCast";
 
 const MovieDetail = () => {
   const [TrailerVideo, setTrailerVideo] = useState(false);
@@ -22,8 +23,7 @@ const MovieDetail = () => {
   // console.log(movieSimilar);
   if (data === null) return <ShimmerUi />;
   const { backdrop_path, title, overview, vote_average } = data;
-  const TimeOut = setTimeout(() => setTrailerVideo(true), 7000);
-
+  setTimeout(() => setTrailerVideo(true), 7000);
   return (
     <div className="">
       <DupliHeader />
@@ -51,6 +51,9 @@ const MovieDetail = () => {
           </div>
         </>
       )}
+      <div className="bg-black text-white">
+        <MovieCast />
+      </div>
       <div className=" p-4  z-10 bg-black">
         <h1 className="text-white text-4xl py-4  pb-10">Recommended</h1>
         <div className="flex overflow-x-scroll no-scrollbar">
