@@ -5,13 +5,10 @@ import ShimmerUi from "./ShimmerUi";
 import DupliHeader from "./DupliHeader";
 import useSimilarmovies from "../customHooks/useSimilarMovies";
 import SimilarMovies from "./SimilarMovies";
-import BackgroungVideo from "./BackgroungVideo";
-import { useState } from "react";
 import useMovieTrailer from "../customHooks/useMovieTrailer";
 import MovieCast from "./MovieCast";
 
 const MovieDetail = () => {
-  const [TrailerVideo, setTrailerVideo] = useState(false);
   const { id } = useParams();
 
   useMovieTrailer(id);
@@ -23,34 +20,27 @@ const MovieDetail = () => {
   // console.log(movieSimilar);
   if (data === null) return <ShimmerUi />;
   const { backdrop_path, title, overview, vote_average } = data;
-  setTimeout(() => setTrailerVideo(true), 7000);
   return (
     <div className="">
       <DupliHeader />
-      {TrailerVideo ? (
-        <BackgroungVideo />
-      ) : (
-        <>
-          <div className="text-white text-3xl w-full h-[830px] absolute  bg-gradient-to-t from-black">
-            <div className="mt-[250px] ml-24">
-              <h1 className="font-mono ">HD 2024</h1>
-              <h1 className="font-serif text-6xl py-6">{title}</h1>
-              <h1 className="font-serif text-sm w-1/2 py-2">{overview}</h1>
-              <h1 className="font-mono ">{vote_average} 💫</h1>
-              <button className="rounded-full py-2 text-black bg-white px-3 mt-6 text-2xl font-serif">
-                Watch Now!
-              </button>
-            </div>
-          </div>
-          <div className="-z-10 relative">
-            <img
-              className="w-screen h-[830px] "
-              src={POSTER_PATH + backdrop_path}
-              alt="poster_image"
-            />
-          </div>
-        </>
-      )}
+      <div className="text-white text-3xl w-full h-[830px] absolute  bg-gradient-to-t from-black">
+        <div className="mt-[250px] ml-24">
+          <h1 className="font-mono ">HD 2024</h1>
+          <h1 className="font-serif text-6xl py-6">{title}</h1>
+          <h1 className="font-serif text-sm w-1/2 py-2">{overview}</h1>
+          <h1 className="font-mono ">{vote_average} 💫</h1>
+          <button className="rounded-full py-2 text-black bg-white px-3 mt-6 text-2xl font-serif">
+            Watch Now!
+          </button>
+        </div>
+      </div>
+      <div className="-z-10 relative">
+        <img
+          className="w-screen h-[830px] "
+          src={POSTER_PATH + backdrop_path}
+          alt="poster_image"
+        />
+      </div>
       <div className="bg-black text-white">
         <MovieCast />
       </div>
@@ -59,7 +49,7 @@ const MovieDetail = () => {
         <div className="flex overflow-x-scroll no-scrollbar">
           <div className="flex">
             {movieSimilar.map((item) => (
-              <Link to={"/watch/" + item.id}>
+              <Link to={"/movie/" + item.id}>
                 <SimilarMovies key={item.id} movieSimilar={item} />
               </Link>
             ))}
