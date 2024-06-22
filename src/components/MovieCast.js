@@ -14,7 +14,7 @@ const MovieCast = () => {
           <div className="flex">
             {item.profile_path && (
               <img
-                className="w-[150px] p-2 my-2 cursor-pointer"
+                className="w-[150px] p-3 my-2 cursor-pointer"
                 src={POSTER_PATH + item.profile_path}
                 alt="cast_photo"
               />
