@@ -60,7 +60,7 @@ const Header = () => {
               "Home "
             ) : (
               <img
-                className="w-16 h-12 cursor-pointer rounded-3xl my-8 mr-7"
+                className=" h-12 cursor-pointer rounded-3xl my-8 mr-7"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJu4yxYyaEMA3rIO-K0XPDnbGIrRsXJb_i9Q&s"
                 alt="search icon"
               />
