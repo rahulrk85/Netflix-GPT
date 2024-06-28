@@ -27,7 +27,7 @@ const Browse = () => {
   // console.log(main_movie);
   if (!Search) {
     return (
-      <div className="no-scrollbar">
+      <div className="no-scrollbar m-auto">
         <Header />
         {gpt ? (
           <GptSearch />
